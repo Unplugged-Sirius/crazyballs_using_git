@@ -5,6 +5,6 @@ here in the project the there contains balls starting at 4 diffrent corners and 
 -collision detection
 -collision effects
 
-the website can be accessed and be viewed @ 
-
+How to run :
+https://unplugged-sirius.github.io/crazyballs_using_git/
 
