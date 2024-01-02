@@ -1,15 +1,15 @@
 document.addEventListener('DOMContentLoaded', function () {
     const container = document.getElementById('container');
     const balls = document.querySelectorAll('.ball');
-
+    //balls initial  directions
     balls.forEach(ball => {
         const initialDirection = getRandomDirection();
         ball.direction = initialDirection
         moveBall(ball, initialDirection);
     });
-
+    // definig the speed of the ball
     function moveBall(ball, direction) {
-        const speed = 1;
+        const speed = 5;
 
         let xSpeed = speed * ball.direction.x;
         let ySpeed = speed * ball.direction.y;
@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
         function updatePosition() {
             const rect = ball.getBoundingClientRect();
             const containerRect = container.getBoundingClientRect();
-
+    // considering each ball wrt other
             balls.forEach(otherBall => {
                 if (otherBall !== ball) {
                     const otherRect = otherBall.getBoundingClientRect();
@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             
             var changed = false
-
+            // collision b/w balls and booundary
             if (rect.left == containerRect.left && rect.top == 0) {
                 var pos_vals = [[0,1],[1,0],[1,1]]; // top left
                 changed = true;
@@ -51,6 +51,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 var pos_vals = [[-1,0],[0,-1],[-1,-1]];
                 var changed = true;
             }
+            //to randomize the directions
             if (changed) {
                 var randtemp = Math.round(Math.random()*2);
                 var xvals = pos_vals[randtemp][0] 
@@ -76,7 +77,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         updatePosition();
     }
-
+// directions to move 
     function getRandomDirection() {
         const randomInt = Math.floor(Math.random() * 4);
         switch (randomInt) {
